@@ -5,7 +5,7 @@ const grid = new gridjs.Grid({
    resizable: true,
   
    pagination:{
-       'limit':5,
+       'limit':15,
    },
 
    language: {
@@ -22,7 +22,7 @@ const grid = new gridjs.Grid({
 
    style:{
        th: {
-           'background-color': '#512da8',
+           'background-color': '#518da8',
            'color': 'white',
            'text-align': 'center'
        },
@@ -32,17 +32,17 @@ const grid = new gridjs.Grid({
    },
    columns: ['Id', 'Name', 'Descripcion', 'Categoria'],
    server:{
-       url: "https://dummyjson.com/products/products",
-       then: ((data )=> {
+       url: "https://dummyjson.com/products",
+       then: data => {
            console.log(data);
-           return data.map(item => [
-              
-               item.brand,
+           return data.products.map(item => [
+               item.id,
+               item.title,
                item.description,
                item.category
 
            ])
-       })
+       }
    }
 }).render(document.getElementById('raizche'));
 
